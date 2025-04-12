@@ -1,0 +1,108 @@
+/*
+ *  =======================================================================
+ *  ····Y88b···d88P················888b·····d888·d8b·······················
+ *  ·····Y88b·d88P·················8888b···d8888·Y8P·······················
+ *  ······Y88o88P··················88888b·d88888···························
+ *  ·······Y888P··8888b···88888b···888Y88888P888·888·88888b·····d88b·······
+ *  ········888······"88b·888·"88b·888·Y888P·888·888·888·"88b·d88P"88b·····
+ *  ········888···d888888·888··888·888··Y8P··888·888·888··888·888··888·····
+ *  ········888··888··888·888··888·888···"···888·888·888··888·Y88b·888·····
+ *  ········888··"Y888888·888··888·888·······888·888·888··888··"Y88888·····
+ *  ·······························································888·····
+ *  ··························································Y8b·d88P·····
+ *  ···························································"Y88P"······
+ *  =======================================================================
+ * 
+ *  -----------------------------------------------------------------------
+ * Author       : 焱铭
+ * Date         : 2025-04-12 10:12:59 +0800
+ * LastEditTime : 2025-04-12 10:43:54 +0800
+ * Github       : https://github.com/YanMing-lxb/
+ * FilePath     : /YMBooK/ctex-fontset-yanming.def
+ * Description  : 
+ *  -----------------------------------------------------------------------
+ */
+
+%
+%  =======================================================================
+%  ····Y88b···d88P················888b·····d888·d8b·······················
+%  ·····Y88b·d88P·················8888b···d8888·Y8P·······················
+%  ······Y88o88P··················88888b·d88888···························
+%  ·······Y888P··8888b···88888b···888Y88888P888·888·88888b·····d88b·······
+%  ········888······"88b·888·"88b·888·Y888P·888·888·888·"88b·d88P"88b·····
+%  ········888···d888888·888··888·888··Y8P··888·888·888··888·888··888·····
+%  ········888··888··888·888··888·888···"···888·888·888··888·Y88b·888·····
+%  ········888··"Y888888·888··888·888·······888·888·888··888··"Y88888·····
+%  ·······························································888·····
+%  ··························································Y8b·d88P·····
+%  ···························································"Y88P"······
+%  =======================================================================
+% 
+%  -----------------------------------------------------------------------
+% Author       : 焱铭
+% Date         : 2025-04-11 18:22:32 +0800
+% LastEditTime : 2025-04-11 20:00:14 +0800
+% Github       : https://github.com/YanMing-lxb/
+% FilePath     : /book_temp/yanmming-fontset.tex
+% Description  : 
+%  -----------------------------------------------------------------------
+%
+
+\GetIdInfo$Id: ctex.dtx 13a2256 2022-07-14 18:54:09 +0800 $
+    {yanming fonts definition (CTEX)}
+\ProvidesExplFile{yanming-fontset.def}
+    {\ExplFileDate}{2.5.10}{\ExplFileDescription}
+
+\ctex_fontset_case:nnn
+    {}
+    {}
+    {
+    \RequirePackage{stix2}
+    
+    \RequirePackage{ifplatform}
+
+    \newcommand{ \AutoFakeCJKOptions } { AutoFakeBold=2.5, AutoFakeSlant=true }
+    \newcommand{ \SetCJKfont         } [2] { 
+        \ifFileExists { ./Fonts/#2 } 
+            { #1 [ \AutoFakeCJKOptions, Path=./Fonts/ ] { #2 } }
+            { \ClassError { 字体缺失 } { 请下载 #2 并放置于 ./Fonts/ 目录，或运行脚本下载 } }
+    }
+
+    \ifwindows
+        \setCJKmainfont   [ \AutoFakeCJKOptions ] { simsun.ttc  }
+        \setCJKsansfont   [ \AutoFakeCJKOptions ] { simhei.ttf  }
+        \setCJKmonofont   [ \AutoFakeCJKOptions ] { simfang.ttf }
+
+        \newCJKfontfamily { \songti } [ \AutoFakeCJKOptions ] { simsun.ttc  }
+        \newCJKfontfamily { \kaiti  } [ \AutoFakeCJKOptions ] { simkai.ttf  }
+        \newCJKfontfamily { \heiti  } [ \AutoFakeCJKOptions ] { simhei.ttf  }
+        \newCJKfontfamily { \fsong  } [ \AutoFakeCJKOptions ] { simfang.ttf }
+        \newCJKfontfamily { \lishu  } [ \AutoFakeCJKOptions ] { simli.ttf   }
+        \newCJKfontfamily { \yahei  } [ \AutoFakeCJKOptions ] { msyh.ttc    }
+        \newCJKfontfamily { \yuanti } [ \AutoFakeCJKOptions ] { simyou.ttf  }
+    \else
+        \ifmacosx
+            \setCJKmainfont   [ \AutoFakeCJKOptions ] { Songti~SC~Light }
+            \setCJKsansfont   [ \AutoFakeCJKOptions ] { PingFang~SC     }
+            \setCJKmonofont   [ \AutoFakeCJKOptions ] { STFangsong      }
+
+            \newCJKfontfamily { \songti } [ \AutoFakeCJKOptions ] { Songti~SC~Light }
+            \newCJKfontfamily { \kaiti  } [ \AutoFakeCJKOptions ] { Kaiti~SC        }
+            \newCJKfontfamily { \heiti  } [ \AutoFakeCJKOptions ] { Heiti~SC~Light  }
+            \newCJKfontfamily { \fsong  } [ \AutoFakeCJKOptions ] { STFangsong      }
+            \newCJKfontfamily { \lishu  } [ \AutoFakeCJKOptions ] { Baoli~SC        }
+            \newCJKfontfamily { \yahei  } [ \AutoFakeCJKOptions ] { PingFang~SC     }
+            \newCJKfontfamily { \yuanti } [ \AutoFakeCJKOptions ] { Yuanti~SC~Light }
+        \else
+            \SetCJKfont { \setCJKmainfont } { FZ-ShuSong.ttf  }
+            \SetCJKfont { \setCJKsansfont } { FZ-HeiTi.ttf    }
+            \SetCJKfont { \setCJKmonofont } { FZ-FangSong.ttf }
+
+            \SetCJKfont { \newCJKfontfamily { \songti } } { FZ-ShuSong.ttf   }
+            \SetCJKfont { \newCJKfontfamily { \kaiti  } } { FZ-KaiTi.ttf     }
+            \SetCJKfont { \newCJKfontfamily { \heiti  } } { FZ-HeiTi.ttf     }
+            \SetCJKfont { \newCJKfontfamily { \fsong  } } { FZ-FangSong.ttf  }
+            \SetCJKfont { \newCJKfontfamily { \yuanti } } { Free-HCYuan.ttf  }
+        \fi
+    \fi
+    }
