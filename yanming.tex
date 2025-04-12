@@ -1,0 +1,69 @@
+
+% ====================页边距设置====================
+% 检测文档是否为 twoside 模式
+\makeatletter
+\if@twoside
+    \geometry{
+        paper=a4paper,
+        inner=2.5cm,      % 内侧内容到装订线的距离
+        outer=2cm,        % 外侧边距
+        bindingoffset=0.5cm, % 装订偏移量（总内侧边距 = inner + bindingoffset = 3cm）
+        top=3cm, 
+        bottom=2cm, 
+        headheight=2cm, 
+        headsep = 0.2cm,
+        footskip=0.7cm
+    }
+\else
+    \geometry{
+        paper=a4paper,
+        left=2.5cm,       % 单面模式下左右边距均为 2.5cm
+        right=2.5cm,
+        top=3cm, 
+        bottom=2cm, 
+        headheight=2cm, 
+        headsep = 0.2cm,
+        footskip=0.7cm
+    }
+\fi
+\makeatother
+
+% 将当前页面的底部对齐方式设置为“不齐平”LATEX 默认会设法让左右页的内容一样多，即左右页的最后一行位于同一高度。有时候这会造成难看的版面，特别是有可能留下过多段间空白。一般可以用 \raggedbottom 命令来取消这一设定。
+\raggedbottom 
+
+% ====================正文页眉设置====================
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand\headrule{ % 设置页眉线样式
+    \hrule height\headrulewidth width\headwidth
+    \vskip 1.2pt % 设置两页眉线间距
+    \hrule height\headrulewidth width\headwidth
+}
+\renewcommand{\headrulewidth}{1pt} % 设置页眉线宽度
+
+\renewcommand{\chaptermark}[1]{\markboth{\CTEXthechapter\ \quad #1}{}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CE]{\zihao{5} 这里填入题目} % 偶数页眉内容为中文标题
+\fancyhead[CO]{\zihao{5} \leftmark} % 奇数页页眉使用章节
+\fancyfoot[CE,CO]{\zihao{-5} \thepage}
+
+
+% ====================目录样式设置====================
+\setcounter{tocdepth}{2}                             % 设置目录深度
+\tocloftpagestyle{fancy}                             % 设置目录页码样式为fancy
+\renewcommand{\cftchappagefont}{\songti}             % 设置目录章节页码字体为正常字体
+\renewcommand\cftchapleader{\cftdotfill{\cftdotsep}} % 设置目录章节页码连接线为点线
+\renewcommand{\cftdotsep}{0.4}   
+\AddToHook {shipout/background}{\addtocontents{toc}{\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}}} % 设置目录页码宽度为页码宽度减去1pt
+
+\addtolength{\cftchapnumwidth}{25pt}
+\renewcommand{\cfttoctitlefont}{\zihao{-3}\selectfont\heiti}
+\renewcommand\cftchapfont{\songti}
+
+%% 设置目录行距
+\setlength{\cftbeforetoctitleskip}{0pt}    % 设置目录标题前的垂直距离为0pt
+\setlength{\cftaftertoctitleskip}{0pt}     % 设置目录标题后的垂直距离为18pt
+\setlength{\cftbeforechapskip}{0pt}        % 设置章节标题前的垂直距离为0pt
+

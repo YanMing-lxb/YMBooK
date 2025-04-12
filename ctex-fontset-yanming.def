@@ -8,7 +8,7 @@
     {}
     {}
     {
-    \RequirePackage{stix2} % 数学字体和英文字体采用stix2字体（类Times字体）已包含 amssymb 宏包, 并且需要同时加载mathspec，否则部分符号会出现错误
+    \RequirePackage[notext]{stix2} % 数学字体和英文字体采用stix2字体（类Times字体）已包含 amssymb 宏包, 并且需要同时加载mathspec，否则部分符号会出现错误
     
     \RequirePackage{ifplatform}
 

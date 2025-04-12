@@ -1,16 +1,90 @@
-\documentclass[12pt, a4paper, oneside, scheme=chinese,fontset=yanming]{ctexbook}
+\documentclass[
+    12pt, 
+    a4paper,
+    scheme=chinese, 
+    oneside, 
+    % twoside,  
+    openany,   % 则表示每章从新的一页开始
+    % openright, % 表示每章从奇数页开始，也就是右边
+    fontset=yanming, 
+    sub3section,
+    linespread = 1.389
+    ]{ctexbook}
+% \documentclass[12pt, a4paper, oneside, fontset=yanming]{book}
+% \usepackage{ctex}[         
+%     scheme=chinese,
+%     heading=true,
+%     sub3section,
+%     secnumdepth = 4
+% ]
+\ctexset{
+    today = big,
+    contentsname = 目\quad 录,
+    listfigurename = 插图索引,
+    listtablename = 插表索引,
+    indexname = 符号索引,
+    appendixname = 附\quad 录,
+    secnumdepth = paragraph,
+    chapter = {
+        pagestyle = {fancy},
+        beforeskip = 17pt,
+        fixskip = true,
+        name = {第,章},
+        afterskip = 16.5pt,
+        aftername = \enspace,
+        format = \centering\heiti\zihao{3},
+    },
+    section = {
+        beforeskip = 13pt,
+        fixskip = true,
+        name = {\S},
+        afterskip = 13pt,
+        aftername = \enspace,
+        format = \centering\zihao{4}\songti,
+    },
+    subsection = {
+        beforeskip = 13pt,
+        fixskip = true,
+        name = {\S},
+        afterskip = 13pt,
+        aftername = \enspace,
+        format = \raggedright\zihao{4}\songti,
+    },
+    subsubsection = {
+        beforeskip = 10pt,
+        fixskip = true,
+        number = \arabic{subsubsection}、,
+        afterskip = 10pt,
+        aftername = ,
+        format = \raggedright\zihao{-4}\songti,
+    },
+    paragraph = {
+        beforeskip = 10pt,
+        fixskip = true,
+        number = (\arabic{paragraph}),
+        afterskip = 10pt,
+        aftername = \enspace,
+        format = \raggedright\zihao{-4}\songti,
+    }
+}
 
+% -------------------- 字体相关宏包 --------------------
+\usepackage{xeCJKfntef}
 
-% -------------------- 字体宏包 --------------------
+% -------------------- 盒子宏包 --------------------
+\usepackage[most]{tcolorbox}                     	% 加载 tcolorbox 宏包，并使用 most 库
+\usepackage[absolute,overlay]{textpos}           	% 用于绝对定位文本框，用于排版封面
+% \RequirePackage{showframe}                         	% 显示排版框架
+% \TPshowboxestrue                                   	% 显示textblock 框架，方便调整位置
+\usepackage{adjustbox}                           	% 用于调整盒子的大小和位置，直白的说就是将超宽表格居中放置
 
-
-
-% -------------------- 段落宏包 --------------------
-
+% -------------------- 符号说明相关宏包 --------------------
+\RequirePackage{multicol}                             	% 提供多栏环境
+\RequirePackage[intoc]{nomencl}                       	% 用于生成符号说明 参数 intoc 表示将符号说明加入目录
 
 % -------------------- 目录宏包 --------------------
-
-
+\usepackage[titles]{tocloft}
+\usepackage{calc}
 % -------------------- 公式宏包 --------------------
 
 \usepackage{amsmath}
@@ -36,34 +110,104 @@
 \usepackage{tabularray}
 \usepackage{threeparttable}
 
+
+
 % -------------------- 列表宏包 --------------------
 \usepackage{enumitem}
 % -------------------- 交叉宏包 --------------------
+\usepackage[hyphens]{xurl}                        	    % 允许在长网址中断行，避免超出边界
+\usepackage[
+	unicode,               								% 设置是否使用 Unicode 字符集
+	pdfencoding=auto,      								% 设置 PDF 编码格式
+	bookmarks=true,        								% 设置 PDF 文件是否生成书签
+	hyperfootnotes=false,  								% 设置是否给脚注添加链接
+	bookmarksnumbered=true,								% 设置 PDF 书签是否带编号
+	bookmarksdepth=4       								% 设置书签的深度
+]{hyperref}                								% 用于设置书签和超链接
+\hypersetup{                        			% 文中链接设置
+	% pdfauthor = {\TheAuthor},     			% 设置作者名称；
+	% pdftitle = {\zh@TheTitle},    			% 设置文档的标题；
+	% pdfsubject = {\DisplayHeader},			% 设置文档主题；
+	% pdfkeywords = {},             			% 设置文档中关键词
+	colorlinks=true,                			% 指定是否给链接添加颜色；
+	citecolor=black,                			% citecolor链接颜色设置；
+	linkcolor=black,                			% linkcolor引用颜色设置；
+	urlcolor=black                  			% urlcolor网址颜色；
+}
+
 \usepackage{cleveref}
+\crefname{chapter}{}{}
+\crefname{section}{}{}
+\crefname{subsection}{}{}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{equation}{式}{式}
+\crefname{algorithm}{算法}{算法}
+\crefname{algocf}{算法}{算法}
+
+\crefname{subfigure}{\subSetName 图}{\subSetName 图}
+\crefname{subtable}{\subSetName 表}{\subSetName 表}
+\crefname{subequation}{\subSetName 式}{\subSetName 式}
+\crefname{subalgorithm}{\subSetName 算法}{\subSetName 算法}
+
+
+% ===============参考文献相关宏包===============
+% \usepackage[
+% 	backend=biber,       						% 设置后端程序为biber
+% 	doi=false,           						% 不显示doi
+% 	url=false,           						% 不显示url
+% 	defernumbers=true,   						% 解决refsection环境中 \printbibliography 筛选和 notice* 一起使用导致的编号错乱
+% 	bibstyle=gb7714-2015,						% 参考文献样式
+% 	citestyle=gb7714-2015,
+% 	gbmedium=false,                     		% 载体标识符不显示OL
+% 	% gbpub=true,                       		  % 显示出版信息
+% 	% gbnamefmt=lowercase,              		  % 姓名小写，这个在最新版本的模板中还是需要大写的，因此需要关闭
+% 	% gbpunctin=false,                  		  % 关闭inbook,incollection,inproceedings中析出来源文献前//符号，这个在最新版本模板中还是需要的，因此需要关闭
+% 	gbstrict=true,                      		% 避免输出 bib 文件中多余的域信息
+% 	gbalign=center,                     		% 标签中括号对齐
+% 	gbannote=true,                      		% 显示annote域，使得完成对于thesisauthor和corresponding的显示
+% ]{biblatex}
+% % \DefineBibliographyStrings{english}{in={}} % 去掉英文in，避免会议中的in:出现，这行是不需要的，不使用gbpunctin或注释即可
+
 
 % -------------------- 排版宏包 --------------------
+\usepackage[showframe]{geometry}  % 页眉和页脚的边距
+\usepackage[twoside]{fancyhdr}
+\usepackage{setspace}
+
 
 % -------------------- 杂项宏包 --------------------
-\usepackage{datetime2}
+\usepackage{pifont}                               	% 提供了许多符号和图标的命令
+\usepackage{datetime2}                            	% 提供了日期和时间格式控制功能，包括 \today 命令
+\usepackage[hshift=0mm,vshift=0mm]{fgruler} % 绘制标尺
+\usepackage{zhlipsum}
 
+\input{yanming.tex}
+\usepackage[l2tabu, orthodox]{nag}			
 
-\author{作者}
-\title{标题}
+\title{这是标题}
+\author{ Mary\thanks{E-mail:*****@***.com}
+\and Ted\thanks{Corresponding author}
+\and Louis}
 \date{\today}
-
 
 \begin{document}
 
-\chapter{章节标题}
+\maketitle
 
+\tableofcontents
+
+
+\chapter{章标题}
+\zhlipsum[1]
 \section{节标题}
-
+\zhlipsum[1]
 \subsection{子节标题}
-
+\zhlipsum[1]
 \subsubsection{子子节标题}
 
-\paragraph{段落标题} 
-\subparagraph{子段落标题}
+\paragraph{段落标题} 测试段落内容首先，.def文件通常用于定义命令或配置参数。例如，在babel宏包中，每个语言都有一个对应的.def文件，里面定义了该语言的特定命令，比如日期格式、连字符规则等。用户可能需要创建或修改这些文件来扩展LaTeX的功能，比如添加自定义的语言支持或修改现有的定义。
+\subparagraph{子段落标题}首先，.def文件通常用于定义命令或配置参数。例如，在babel宏包中，每个语言都有一个对应的.def文件，里面定义了该语言的特定命令，比如日期格式、连字符规则等。用户可能需要创建或修改这些文件来扩展LaTeX的功能，比如添加自定义的语言支持或修改现有的定义。
 \begin{equation}
     E = mc^2
 \end{equation}
@@ -98,7 +242,25 @@ Some text, and a math formula \(a+b=\sqrt{c}\).
     
     \item 数学字体：
 \end{itemize}
-
-\zihao{3}测试
+\chapter{内容}
+\zhlipsum[1,8]
+\zhlipsum[1]
+\section{节标题}
+\zhlipsum[1]
+\subsection{子节标题}
+\zhlipsum[1]
+\subsubsection{子子节标题}
+\zhlipsum[1,8]
+\zhlipsum[1,8]
+\chapter{内容}
+\zhlipsum[1]
+\section{节标题}
+\zhlipsum[1]
+\subsection{子节标题}
+\zhlipsum[1]
+\subsubsection{子子节标题}
+\zhlipsum[1,8]
+\chapter{内容}
+\zhlipsum[1,8]
 
 \end{document}
