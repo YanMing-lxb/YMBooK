@@ -19,7 +19,7 @@
  *  -----------------------------------------------------------------------
  * Author       : 焱铭
  * Date         : 2025-01-13 22:46:40 +0800
- * LastEditTime : 2025-04-12 10:37:21 +0800
+ * LastEditTime : 2025-04-12 12:17:42 +0800
  * Github       : https://github.com/YanMing-lxb/
  * FilePath     : /YMBooK/Fonts/Fonts link.md
  * Description  : 
@@ -48,7 +48,7 @@ chmod +x ./Fonts/download_fonts.sh
 运行结束即可完成字体的下载。
 
 ### 中文字体手动下载
-下载完成后请分别重命名为：`FZ-HeiTi.ttf` `FZ-KaiTi.ttf` `FZ-ShuSong.ttf` `FZ-FangSong.ttf` `Free-HCYuan.ttf`
+下载完成后请分别重命名为：`FZ-HeiTi.ttf` `FZ-KaiTi.ttf` `FZ-ShuSong.ttf` `FZ-FangSong.ttf` `HC-YuanTi.ttf`
 
 [黑体简体](https://wangchujiang.com/free-font/preview.html?p=fonts/%E6%96%B9%E6%AD%A3%E5%AD%97%E4%BD%93%E7%B3%BB%E5%88%97/%E6%96%B9%E6%AD%A3%E9%BB%91%E4%BD%93%E7%AE%80%E4%BD%93.ttf&s=3.19%20MB&t=%E6%96%B9%E6%AD%A3%E9%BB%91%E4%BD%93%E7%AE%80%E4%BD%93&v=&l=%E5%95%86%E5%85%8D)
 

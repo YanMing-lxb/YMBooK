@@ -8,7 +8,7 @@ declare -A Fonts=(
   ["$SCRIPT_DIR/FZ-KaiTi.ttf"]="https://cdn.jsdelivr.net/gh/jaywcjlove/free-font@main/docs/fonts/%E6%96%B9%E6%AD%A3%E5%AD%97%E4%BD%93%E7%B3%BB%E5%88%97/%E6%96%B9%E6%AD%A3%E6%A5%B7%E4%BD%93%E7%AE%80%E4%BD%93.ttf"
   ["$SCRIPT_DIR/FZ-HeiTi.ttf"]="https://cdn.jsdelivr.net/gh/jaywcjlove/free-font@main/docs/fonts/%E6%96%B9%E6%AD%A3%E5%AD%97%E4%BD%93%E7%B3%BB%E5%88%97/%E6%96%B9%E6%AD%A3%E9%BB%91%E4%BD%93%E7%AE%80%E4%BD%93.ttf"
   ["$SCRIPT_DIR/FZ-FangSong.ttf"]="https://cdn.jsdelivr.net/gh/jaywcjlove/free-font@main/docs/fonts/%E6%96%B9%E6%AD%A3%E5%AD%97%E4%BD%93%E7%B3%BB%E5%88%97/%E6%96%B9%E6%AD%A3%E4%BB%BF%E5%AE%8B%E7%AE%80%E4%BD%93.ttf"
-  ["$SCRIPT_DIR/Free-HCYuan"]="https://cdn.jsdelivr.net/gh/jaywcjlove/free-font@main/docs/fonts/%E5%AF%92%E8%9D%89%E5%AD%97%E5%9E%8B/%E5%AF%92%E8%9D%89%E5%9C%86%E4%BD%93.ttf"
+  ["$SCRIPT_DIR/HC-YuanTi.ttf"]="https://cdn.jsdelivr.net/gh/jaywcjlove/free-font@main/docs/fonts/%E5%AF%92%E8%9D%89%E5%AD%97%E5%9E%8B/%E5%AF%92%E8%9D%89%E5%9C%86%E4%BD%93.ttf"
 )
 
 # 下载字体
