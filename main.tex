@@ -1,0 +1,103 @@
+\documentclass[12pt, a4paper, oneside, scheme=chinese,fontset=yanming]{ctexbook}
+
+
+% -------------------- 字体宏包 --------------------
+
+
+
+% -------------------- 段落宏包 --------------------
+
+
+% -------------------- 目录宏包 --------------------
+
+
+% -------------------- 公式宏包 --------------------
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+% -------------------- 图片宏包 --------------------
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}[labelformat=simple]
+\usepackage{caption}[
+    font={onehalfspacing, small},
+    labelsep=space,              
+    skip=6pt,                    
+    figurewithin=none,           
+    tablewithin=none             
+]
+
+% -------------------- 表格宏包 --------------------
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{tabularray}
+\usepackage{threeparttable}
+
+% -------------------- 列表宏包 --------------------
+\usepackage{enumitem}
+% -------------------- 交叉宏包 --------------------
+\usepackage{cleveref}
+
+% -------------------- 排版宏包 --------------------
+
+% -------------------- 杂项宏包 --------------------
+\usepackage{datetime2}
+
+
+\author{作者}
+\title{标题}
+\date{\today}
+
+
+\begin{document}
+
+\chapter{章节标题}
+
+\section{节标题}
+
+\subsection{子节标题}
+
+\subsubsection{子子节标题}
+
+\paragraph{段落标题} 
+\subparagraph{子段落标题}
+\begin{equation}
+    E = mc^2
+\end{equation}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{example-image-a}
+%     \caption{图片标题}
+%     \label{fig:example}
+% \end{figure}
+Some text, and a math formula \(a+b=\sqrt{c}\).
+\textbf{\textsf 楷体加粗}
+\section{字体示例}
+\begin{itemize}
+    \item 常规字体：正常文本样式
+    \item 罗马体：\textrm{罗马体}
+    \item 无衬线体：\textsf{无衬线体}
+    \item 等宽字体：\texttt{等宽字体}
+    
+    \item 字体系列：
+    \textmd{中等权重} vs. \textbf{加粗}
+    
+    \item 字体形状：
+    \textup{直立} vs. \textit{斜体} vs. \textsl{伪斜体}
+    
+    \item 小型大写：\textsc{Small Caps}
+    
+    \item 强调文本：
+    \emph{强调效果（自动切换直立/斜体）}
+    
+    \item 中文特殊样式：
+    {\kaiti 楷书} \quad {\heiti 黑体} \quad {\fsong 仿宋} \quad {\lishu 隶书} \quad {\yahei 雅黑} \quad {\yuanti 圆体} \quad {\songti 宋体}
+    
+    \item 数学字体：
+\end{itemize}
+
+\zihao{3}测试
+
+\end{document}
