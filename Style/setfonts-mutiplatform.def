@@ -1,0 +1,66 @@
+
+\RequirePackage[notext]{stix2} % 数学字体和英文字体采用stix2字体（类Times字体）已包含 amssymb 宏包, 并且需要同时加载mathspec，否则部分符号会出现错误
+
+\RequirePackage{expl3}
+\ExplSyntaxOn
+
+
+\newcommand{ \AutoFakeCJKOptions } { AutoFakeBold=2.5, AutoFakeSlant=true }
+\newcommand{ \SetCJKfont         } [2] { 
+    \IfFileExists { ../Fonts/#2 } 
+        { #1 [ \AutoFakeCJKOptions, Path=../Fonts/ ] { #2 } }
+        { \ClassError { 字体缺失 } { 请下载 #2 并放置于 ../Fonts/ 目录，或运行脚本下载 } }
+}
+
+
+% 使用LaTeX3系统判断
+\sys_if_platform_windows:TF {
+    \setCJKmainfont   [ \AutoFakeCJKOptions ] { simsun.ttc  }
+    \setCJKsansfont   [ \AutoFakeCJKOptions ] { simhei.ttf  }
+    \setCJKmonofont   [ \AutoFakeCJKOptions ] { simfang.ttf }
+
+    \newCJKfontfamily { \songti   } [ \AutoFakeCJKOptions ] { simsun.ttc  }
+    \newCJKfontfamily { \kaishu   } [ \AutoFakeCJKOptions ] { simkai.ttf  }
+    \newCJKfontfamily { \heiti    } [ \AutoFakeCJKOptions ] { simhei.ttf  }
+    \newCJKfontfamily { \fangsong } [ \AutoFakeCJKOptions ] { simfang.ttf }
+    \newCJKfontfamily { \lishu    } [ \AutoFakeCJKOptions ] { simli.ttf   }
+    \newCJKfontfamily { \yahei    } [ \AutoFakeCJKOptions ] { msyh.ttc    }
+    \newCJKfontfamily { \yuanti   } [ \AutoFakeCJKOptions ] { simyou.ttf  }
+    
+    \setmainfont{Times~New~Roman}
+
+}{
+    \sys_if_platform_macos:TF {
+        \setCJKmainfont   [ \AutoFakeCJKOptions ] { Songti~SC~Light }
+        \setCJKsansfont   [ \AutoFakeCJKOptions ] { PingFang~SC     }
+        \setCJKmonofont   [ \AutoFakeCJKOptions ] { STFangsong      }
+
+        \newCJKfontfamily { \songti   } [ \AutoFakeCJKOptions ] { Songti~SC~Light }
+        \newCJKfontfamily { \kaishu   } [ \AutoFakeCJKOptions ] { Kaiti~SC        }
+        \newCJKfontfamily { \heiti    } [ \AutoFakeCJKOptions ] { Heiti~SC~Light  }
+        \newCJKfontfamily { \fangsong } [ \AutoFakeCJKOptions ] { STFangsong      }
+        \newCJKfontfamily { \lishu    } [ \AutoFakeCJKOptions ] { Baoli~SC        }
+        \newCJKfontfamily { \yahei    } [ \AutoFakeCJKOptions ] { PingFang~SC     }
+        \newCJKfontfamily { \yuanti   } [ \AutoFakeCJKOptions ] { Yuanti~SC~Light }
+
+        \setmainfont{Times~New~Roman}
+
+    }{
+        \SetCJKfont { \setCJKmainfont } { FZ-ShuSong.ttf  }
+        \SetCJKfont { \setCJKsansfont } { FZ-HeiTi.ttf    }
+        \SetCJKfont { \setCJKmonofont } { FZ-FangSong.ttf }
+
+        \SetCJKfont { \newCJKfontfamily { \songti   } } { FZ-ShuSong.ttf  }
+        \SetCJKfont { \newCJKfontfamily { \kaishu   } } { FZ-KaiTi.ttf    }
+        \SetCJKfont { \newCJKfontfamily { \heiti    } } { FZ-HeiTi.ttf    }
+        \SetCJKfont { \newCJKfontfamily { \fangsong } } { FZ-FangSong.ttf }
+        \SetCJKfont { \newCJKfontfamily { \yuanti   } } { HC-YuanTi.ttf   }
+
+        \setmainfont[                                       % 英文字体应用 stixfonts 字体 (Times New Roman 风格)
+            BoldFont=STIXTwoText-Bold.otf,                  % 粗体字体
+            ItalicFont=STIXTwoText-Italic.otf,              % 斜体字体
+            BoldItalicFont=STIXTwoText-BoldItalic.otf,
+            ]{STIXTwoText-Regular.otf}
+    }
+}
+\ExplSyntaxOff

@@ -6,10 +6,11 @@
     % twoside,  
     openany,   % 则表示每章从新的一页开始
     % openright, % 表示每章从奇数页开始，也就是右边
-    fontset=yanming, 
+    fontset=none, 
     sub3section,
     linespread = 1.389
     ]{ctexbook}
+\input{Style/setfonts-mutiplatform.def}
 % \documentclass[12pt, a4paper, oneside, fontset=yanming]{book}
 % \usepackage{ctex}[         
 %     scheme=chinese,
@@ -238,7 +239,7 @@ Some text, and a math formula \(a+b=\sqrt{c}\).
     \emph{强调效果（自动切换直立/斜体）}
     
     \item 中文特殊样式：
-    {\kaiti 楷书} \quad {\heiti 黑体} \quad {\fsong 仿宋} \quad {\lishu 隶书} \quad {\yahei 雅黑} \quad {\yuanti 圆体} \quad {\songti 宋体}
+    {\kaishu 楷书} \quad {\heiti 黑体} \quad {\fangsong 仿宋} \quad {\lishu 隶书} \quad {\yahei 雅黑} \quad {\yuanti 圆体} \quad {\songti 宋体}
     
     \item 数学字体：
 \end{itemize}
@@ -264,3 +265,4 @@ Some text, and a math formula \(a+b=\sqrt{c}\).
 \zhlipsum[1,8]
 
 \end{document}
+
